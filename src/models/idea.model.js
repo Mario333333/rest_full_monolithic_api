@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const IdeaSchema = new Schema({
-    idea: { type: String, required: true },
-    description: { type: String, required: true },
+    idea: { type: String, required: false },
+    description: { type: String, required: false },
     upVotes: [{ type: Boolean, }],
     downVotes: [{ type: Boolean, }],
-    author: { type: Schema.Types.ObjectId, ref: "user", required: true, autopopulate: true }, // tipo id 
-    comments: [{ type: Schema.Types.ObjectId, ref: "comment", required: true, autopopulate: true }]
+    author: { type: Schema.Types.ObjectId, ref: "user", required: false, autopopulate: true }, 
+    comments: [{ type: Schema.Types.ObjectId, ref: "comment",  autopopulate: true }]
 
 });
 

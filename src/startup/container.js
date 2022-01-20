@@ -14,15 +14,33 @@ const config = require("../config");
 /**
  * Service layer
  */
-const { HomeService, UserService, IdeaService, CommentService } = require("../services");
+const {
+  HomeService,
+  UserService,
+  IdeaService,
+  CommentService,
+  AuthService,
+} = require("../services");
 /**
  * Controllers layer
  */
-const { HomeController } = require("../controllers");
+const {
+  HomeController,
+  UserController,
+  IdeaController,
+  CommentController,
+  AuthController
+} = require("../controllers");
 /**
  * Routes layer
  */
-const { HomeRoutes } = require("../routes/index.routes");
+const {
+  HomeRoutes,
+  UserRoutes,
+  IdeaRoutes,
+  CommentRoutes,
+  AuthRoutes
+} = require("../routes/index.routes");
 
 /** Router */
 const Router = require("../routes");
@@ -31,7 +49,11 @@ const Router = require("../routes");
 const { User, Comment, Idea } = require("../models");
 
 /** Repositories */
-const { UserRepository, CommentRepository, IdeaRepository } = require("../repositories ");
+const {
+  UserRepository,
+  CommentRepository,
+  IdeaRepository,
+} = require("../repositories ");
 
 container
   .register({ Server: asClass(Server).singleton() })
@@ -44,17 +66,35 @@ container
     UserService: asClass(UserService).singleton(),
     IdeaService: asClass(IdeaService).singleton(),
     CommentService: asClass(CommentService).singleton(),
+    AuthService: asClass(AuthService).singleton(),
   })
   .register({
     HomeController: asClass(HomeController.bind(HomeController)).singleton(),
+    UserController: asClass(UserController.bind(UserController)).singleton(),
+    IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
+    CommentController: asClass(
+      CommentController.bind(CommentController)
+    ).singleton(),
+    AuthController: asClass(AuthController.bind(AuthController)).singleton(),
   })
-  .register({ HomeRoutes: asFunction(HomeRoutes).singleton() })
-  .register({ User: asValue(User), Idea: asValue(Idea), Comment: asValue(Comment), })
+  .register({
+    HomeRoutes: asFunction(HomeRoutes).singleton(),
+    UserRoutes: asFunction(UserRoutes).singleton(),
+    IdeaRoutes: asFunction(IdeaRoutes).singleton(),
+    CommentRoutes: asFunction(CommentRoutes).singleton(),
+    AuthRoutes: asFunction(AuthRoutes).singleton(),
+    
+
+  })
+  .register({
+    User: asValue(User),
+    Idea: asValue(Idea),
+    Comment: asValue(Comment),
+  })
   .register({
     UserRepository: asClass(UserRepository).singleton(),
     CommentRepository: asClass(CommentRepository).singleton(),
     IdeaRepository: asClass(IdeaRepository).singleton(),
-  })
-
+  });
 
 module.exports = container;
