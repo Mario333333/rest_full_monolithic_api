@@ -29,7 +29,7 @@ const {
   UserController,
   IdeaController,
   CommentController,
-  AuthController
+  AuthController,
 } = require("../controllers");
 /**
  * Routes layer
@@ -39,7 +39,7 @@ const {
   UserRoutes,
   IdeaRoutes,
   CommentRoutes,
-  AuthRoutes
+  AuthRoutes,
 } = require("../routes/index.routes");
 
 /** Router */
@@ -53,7 +53,7 @@ const {
   UserRepository,
   CommentRepository,
   IdeaRepository,
-} = require("../repositories ");
+} = require("../repositories");
 
 container
   .register({ Server: asClass(Server).singleton() })
@@ -83,8 +83,6 @@ container
     IdeaRoutes: asFunction(IdeaRoutes).singleton(),
     CommentRoutes: asFunction(CommentRoutes).singleton(),
     AuthRoutes: asFunction(AuthRoutes).singleton(),
-    
-
   })
   .register({
     User: asValue(User),
