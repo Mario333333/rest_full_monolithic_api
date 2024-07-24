@@ -10,6 +10,7 @@ class UserRepository extends BaseRepository {
     }
 
     async getUserByUserName(username) {
+        console.log(username);
         return await _user.findOne({ username })
     }
 

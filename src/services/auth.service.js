@@ -25,6 +25,7 @@ class AuthService {
     async signIn(user){
         const {username, password} = user;
         const userExist = await _userService.getUserByUserName(username);
+        
 
         if (!userExist) {
             const error = new Error()

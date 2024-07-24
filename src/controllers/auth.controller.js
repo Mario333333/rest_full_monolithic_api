@@ -12,6 +12,7 @@ class AuthController {
   }
   async signIn(req, res) {
     const { body } = req;
+
     const creds = await _authService.signIn(body);
     return res.status(200).send(creds);
   }
