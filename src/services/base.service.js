@@ -34,6 +34,7 @@ class BaseService {
     }
 
     async update(id, entity) {
+        console.log(entity.body);
         if (!id) {
             const error = new Error()
             error.status = 400;
